@@ -25,16 +25,8 @@ defmodule AtbashCipher.Atbash do
 
   defp process_char(character) when is_bitstring(character) do
     character
-      |> check_key
+      |> English.is_it
       |> check_case
-  end
-
-  defp process_char(character) do
-    IO.puts "\[ #{character} \] is not an english alphabet character of type String\n OR \nIt's not wrapped in double quotes \"\""
-  end
-
-  defp check_key(character) do
-    {has_key(character), character}
   end
 
   defp check_case({:true, character}) do
@@ -51,10 +43,6 @@ defmodule AtbashCipher.Atbash do
   defp check_case({:false, character}) do
     IO.puts "\[ #{character} \] punctuation or non-english character, skipping"
     character
-  end
-
-  defp has_key(character) do
-    Map.has_key?(@atbash_key, convert(character))
   end
 
   defp convert(character) do
