@@ -1,4 +1,7 @@
-<div id="output" class="jumbotron"></div>
+<div class="jumbotron">
+  <h2><%= gettext "Atbash Cipher" %></h2>
+  <div id="output"></div>
+</div>
 <div class="center">
 <input id="cipher-input" type="text"></input>
 </div>

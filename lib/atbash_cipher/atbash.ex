@@ -41,13 +41,10 @@ defmodule AtbashCipher.Atbash do
     case character |> String.downcase == character do
       true ->
         #IO.puts "\[ #{character} \] is already lower-case"
-        character = Map.fetch! @atbash_key, String.to_atom(character)
-        character
+        {:lower, character} |> atbash
       false ->
         #IO.puts "\[ #{character} \] is not already lower-case"
-        character = Map.fetch! @atbash_key, convert(character)
-        character = String.upcase(character)
-        character
+        {:upper, character} |> atbash
     end
   end
 
@@ -64,5 +61,13 @@ defmodule AtbashCipher.Atbash do
     character
       |> String.downcase
       |> String.to_atom
+  end
+
+  defp atbash({:lower, character}) do
+    Map.fetch! @atbash_key, String.to_atom(character)
+  end
+
+  defp atbash({:upper, character}) do
+    Map.fetch!(@atbash_key, convert(character)) |> String.upcase
   end
 end
