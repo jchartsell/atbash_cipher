@@ -2,7 +2,7 @@ defmodule AtbashCipher.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", AtbashCipher.RoomChannel
+  channel "cipher:*", AtbashCipher.CipherChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
