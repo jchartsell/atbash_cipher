@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :atbash_cipher, AtbashCipher.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  #username: "postgres",
+  #password: "postgres",
   database: "atbash_cipher_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
